@@ -47,7 +47,7 @@
         <td>
           <a [routerLink]="['product-details', product.id]">{{ product.id }}</a>
         </td>
-        <td>{{ product.name }}</td>
+        <td>{{ product.name | uppercase }}</td>
         <td>{{ product.price }}</td>
         <td>{{ product.category }}</td>
         <td>
@@ -62,5 +62,5 @@
   </table>
 </div>
 <ng-container *ngIf="products.length === 0">
-  <i>No Products Founds </i>
+  <i>No Products Founds</i>
 </ng-container>
