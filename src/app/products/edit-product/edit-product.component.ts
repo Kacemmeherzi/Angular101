@@ -7,8 +7,8 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { Product } from '../../models/product';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Product } from '../models/product';
 
 @Component({
   selector: 'app-edit-product',
