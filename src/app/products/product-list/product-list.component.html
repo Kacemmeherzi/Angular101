@@ -1,0 +1,66 @@
+<div class="main-view">
+  <span class="title">Products</span>
+  <div class="actions">
+    <select
+      name="category"
+      id="category"
+      [(ngModel)]="selectedCategory"
+      (ngModelChange)="filterProducts($event)"
+    >
+      <option value="" selected>All Categories</option>
+      <option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </option>
+    </select>
+
+    <input
+      class="action-item"
+      type="text"
+      [(ngModel)]="searchTeam"
+      (ngModelChange)="filterProducts($event)"
+      placeholder="search by id..."
+    />
+  </div>
+  <table class="table">
+    <tr>
+      <th>
+        id <button (click)="sortbyfield('id')">Sort {{ sortDirection }}</button>
+      </th>
+      <th>
+        name
+        <button (click)="sortbyfield('name')">Sort {{ sortDirection }}</button>
+      </th>
+      <th>
+        price
+        <button (click)="sortbyfield('price')">Sort {{ sortDirection }}</button>
+      </th>
+      <th>
+        category
+        <button (click)="sortbyfield('category')">
+          Sort {{ sortDirection }}
+        </button>
+      </th>
+      <th>actions</th>
+    </tr>
+    <ng-container *ngFor="let product of products">
+      <tr *ngIf="products.length > 0">
+        <td>
+          <a [routerLink]="['product-details', product.id]">{{ product.id }}</a>
+        </td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.category }}</td>
+        <td>
+          <button (click)="detelteProduct(product.id)">Delete</button>
+          <app-edit-product
+            [product]="product"
+            (UpdatedProductEvent)="handleUpdate($event, product.id)"
+          ></app-edit-product>
+        </td>
+      </tr>
+    </ng-container>
+  </table>
+</div>
+<ng-container *ngIf="products.length === 0">
+  <i>No Products Founds </i>
+</ng-container>

@@ -1,0 +1,14 @@
+<div *ngIf="visible" class="modal" [class.show]="visible">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label for="id">Id</label>
+    <input type="text" formControlName="id" />
+    <label for="name">Name</label>
+    <input id="name" type="text" formControlName="name" />
+    <label for="price">price</label>
+    <input id="price" type="text" formControlName="price" />
+    <label for="category">category</label>
+    <input type="text" formControlName="category" id="category" />
+    <button type="submit" [disabled]="form.invalid">Save</button>
+  </form>
+</div>
+<button (click)="togglevisibility()">Edit</button>
