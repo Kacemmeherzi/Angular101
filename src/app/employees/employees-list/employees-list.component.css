@@ -1,0 +1,20 @@
+table,
+th,
+td {
+  border: 1px solid black;
+}
+.view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+table {
+  width: 80%;
+}
+
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
+}

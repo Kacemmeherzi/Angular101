@@ -1,0 +1,19 @@
+<div class="view">
+  <div class="title"><h1>employees List</h1></div>
+  <table>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>department</th>
+      <th>Is present</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let emp of employees$ | async">
+      <td>{{ emp.id }}</td>
+      <td>{{ emp.name }}</td>
+      <td>{{ emp.department }}</td>
+      <td [ngClass]="changeBackground(emp.isPresent)">{{ emp.isPresent }}</td>
+      <td><app-handle-presence [employee]="emp"></app-handle-presence></td>
+    </tr>
+  </table>
+</div>
