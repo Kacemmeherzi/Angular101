@@ -19,4 +19,8 @@ export class EmployeesServiceService {
     );
     this.employees.next(updated);
   }
+  removeEmployee(id: number) {
+    const updated = this.employees.value.filter((emp) => id !== emp.id);
+    this.employees.next(updated);
+  }
 }

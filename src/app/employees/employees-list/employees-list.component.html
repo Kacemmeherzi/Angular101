@@ -1,5 +1,10 @@
 <div class="view">
   <div class="title"><h1>employees List</h1></div>
+  <div class="actions">
+    <button (click)="navigateToDetails()" class="btn" [disabled]="!selectedEmp">
+      view Details
+    </button>
+  </div>
   <table>
     <tr>
       <th>id</th>
@@ -8,12 +13,28 @@
       <th>Is present</th>
       <th>Actions</th>
     </tr>
-    <tr *ngFor="let emp of employees$ | async">
+    <tr
+      *ngFor="let emp of employees$ | async"
+      (click)="selectEmp(emp)"
+      [ngClass]="{ active: selectedEmp === emp }"
+    >
       <td>{{ emp.id }}</td>
-      <td>{{ emp.name }}</td>
+      <td
+        [ngStyle]="{
+          color: emp.id === 1 ? 'green' : 'red',
+          'font-weight': 'bold'
+        }"
+      >
+        {{ emp.name }}
+      </td>
       <td>{{ emp.department }}</td>
       <td [ngClass]="changeBackground(emp.isPresent)">{{ emp.isPresent }}</td>
-      <td><app-handle-presence [employee]="emp"></app-handle-presence></td>
+      <td>
+        <app-handle-presence [employee]="emp"></app-handle-presence>
+        <button (keydown)="keydown($event)"  style="margin-left: 5px" (click)="deleteEmployee(emp.id)">
+          Delete
+        </button>
+      </td>
     </tr>
-  </table>
+  </table>    
 </div>

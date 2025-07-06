@@ -11,10 +11,26 @@ td {
 table {
   width: 80%;
 }
+tr:hover {
+  cursor: pointer;
+}
 
 .red {
   background-color: red;
 }
 .blue {
   background-color: blue;
+}
+.active {
+  background-color: aqua;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  width: 80%;
+}
+.btn {
+  margin-left: auto;
 }

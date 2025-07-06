@@ -9,6 +9,16 @@ import { Employee } from '../models/employee';
   styleUrl: './employees-list.component.css',
 })
 export class EmployeesListComponent implements OnInit {
+keydown(event: KeyboardEvent) {
+console.log(event);
+
+}
+  navigateToDetails() {
+    throw new Error('Method not implemented.');
+  }
+  selectEmp(emp: Employee) {
+    this.selectedEmp = emp;
+  }
   changeBackground(
     isPresent: boolean
   ):
@@ -20,9 +30,13 @@ export class EmployeesListComponent implements OnInit {
     | undefined {
     return isPresent ? { blue: isPresent } : { red: !isPresent };
   }
+  selectedEmp!: Employee;
   constructor(private employeesService: EmployeesServiceService) {}
   employees$!: Observable<Employee[]>;
   ngOnInit(): void {
     this.employees$ = this.employeesService.employees$;
+  }
+  deleteEmployee(id: number) {
+    this.employeesService.removeEmployee(id);
   }
 }

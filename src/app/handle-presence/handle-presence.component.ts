@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { EmployeesServiceService } from '../../services/employees-service.service';
-import { Employee } from '../models/employee';
+import { EmployeesServiceService } from '../services/employees-service.service';
+import { Employee } from '../employees/models/employee';
 
 @Component({
   selector: 'app-handle-presence',

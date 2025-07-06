@@ -1,0 +1,38 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label for="name">Name</label>
+  <input id="name" formControlName="name" />
+  <span *ngIf="form.controls['name'].errors?.['required'] && submitted"
+    >This is required</span
+  >
+
+  <label for="email">Email</label>
+  <input id="email" formControlName="email" />
+
+  <label for="password">Password</label>
+  <input id="password" formControlName="password" />
+
+  <label for="conpassword">Confirm Password</label>
+  <input id="conpassword" formControlName="confirm_password" />
+  <div formArrayName="projects">
+    <div
+      *ngFor="let project of projects.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <label>name</label>
+      <input formControlName="name" />
+      <label for="">
+        <input type="checkbox" name="" id="" formControlName="isValid" /> is
+        valid</label
+      >
+      <button type="button" (click)="remove(i)">remove</button>
+    </div>
+    <button type="button" (click)="add()">add</button>
+  </div>
+
+  <label *ngIf="form.contains('accept_term')">
+    <input type="checkbox" formControlName="accept_term" />
+    Accept our Terms of use
+  </label>
+
+  <button type="submit" [disabled]="form.invalid">Register</button>
+</form>

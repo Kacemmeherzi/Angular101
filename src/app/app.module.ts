@@ -9,17 +9,22 @@ import { ProductModuleModule } from './products/product-module.module';
 import { ProductsDetailsComponent } from './products/products-details/products-details.component';
 import { EditProductComponent } from './products/edit-product/edit-product.component';
 import { EmployeesListComponent } from './employees/employees-list/employees-list.component';
-import { HandlePresenceComponent } from './employees/handle-presence/handle-presence.component';
+import { HandlePresenceComponent } from './handle-presence/handle-presence.component';
 import { EmployeesModule } from './employees/employees.module';
 import { UppercasePipe } from './uppercase.pipe';
+import { HighlightDirective } from './highlight.directive';
+import { FormsComponent } from './forms/forms.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, UppercasePipe],
+  declarations: [AppComponent, HighlightDirective, FormsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ProductModuleModule,
     EmployeesModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent],
